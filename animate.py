@@ -11,7 +11,7 @@ from run_experiment import run
 
 STEPS, WIN = 200, 60
 XS = [1.0, 3.0, 5.0]                 # patch x positions
-SAVE_GIF = False                     # True: also save foraging.gif (slow)
+SAVE_GIF = True                     # True: also save foraging.gif (slow)
 hist = run(DynamicAgent(), ForagingEnv(seed=3), STEPS)
 
 # ---------- figure ----------
@@ -149,7 +149,13 @@ anim = FuncAnimation(fig, update, frames=itertools.count(), interval=30,
 if __name__ == "__main__":
     if SAVE_GIF:
         ctl["pause"] = True
-        gif = FuncAnimation(fig, lambda t: draw(t), frames=np.arange(0, STEPS - 1, 0.12))
-        gif.save("foraging.gif", writer="pillow", fps=15)
+        # اسلایدرها و دکمه‌ها در gif نیفتند
+        for w in (s_exploit, s_explore, btn, btn2):
+            w.ax.set_visible(False)
+        gif = FuncAnimation(fig, lambda t: draw(t), frames=np.arange(0, 80, 0.2))
+        gif.save("foraging.gif", writer="pillow", fps=20, dpi=70)
+        for w in (s_exploit, s_explore, btn, btn2):
+            w.ax.set_visible(True)
         ctl["pause"] = False
+        print("foraging.gif saved")
     plt.show()
