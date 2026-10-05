@@ -29,7 +29,7 @@ for x in XS:
 berries = ax.scatter([], [], s=90, color="#d2342b", edgecolors="#7a1511", zorder=3)
 labels = [ax.text(x, 2.45, "", ha="center", fontsize=11, weight="bold") for x in XS]
 title = ax.text(0.1, 2.75, "", fontsize=17, weight="bold")
-ax.text(5.9, 2.75, "Exploit = stay and eat\nExplore = walk to a new patch",
+ax.text(5.9, 2.92, "Exploit = stay and eat\nExplore = walk to a new patch",
         ha="right", va="top", fontsize=10, color="#444")
 
 # squirrel: parts defined relative to its position (dx, dy, kind)
